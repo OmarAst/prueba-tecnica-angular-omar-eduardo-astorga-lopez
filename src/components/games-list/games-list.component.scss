@@ -1,0 +1,21 @@
+ .buttonpag {
+     padding: 0;
+     margin: 0;
+     border: none;
+ }
+
+ .pagination {
+    justify-content: center; /* Centra los elementos de la paginación */
+    margin: 0; /* Elimina márgenes adicionales si es necesario */
+  }
+  
+  .page-item .page-link {
+    border-radius: 0; /* Opcional: Ajusta el radio del borde */
+  }
+  
+  .page-item .page-link.active {
+    background-color: #007bff; /* Color de fondo para la página activa */
+    color: white; /* Color del texto para la página activa */
+    font-weight: bold; /* Opcional: Resalta el texto de la página activa */
+    border-color: #007bff; /* Opcional: Color del borde para la página activa */
+  }

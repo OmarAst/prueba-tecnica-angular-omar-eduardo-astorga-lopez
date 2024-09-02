@@ -1,0 +1,76 @@
+
+<div class="container-fluid">
+
+    <!-- formulario -->
+    <form class="row gx-3 gy-2 align-items-center d-flex justify-content-center">
+        <div class="col-sm-3">
+            <label for="name">Nombre</label>
+            <input type="text" class="form-control" id="name" [ngModelOptions]="{standalone: true}"
+                [(ngModel)]="txtfiltroNombre" (keyup)="buscarConFiltros()">
+        </div>
+        <div class="col-sm-3">
+            <multiple-select [options]="generos" tipo="genero" selectId="generoSelect" (selectedOptionsChange)="onSelectedGenerosChange($event)"></multiple-select>
+          </div>
+          <div class="col-sm-3">
+            <multiple-select [options]="plataform" tipo="plataforma" selectId="plataformaSelect" (selectedOptionsChange)="onSelectedPlataformChange($event)"></multiple-select>
+          </div>
+        <!-- <div class="col-auto">
+            <div class="form-check">
+                <select class="form-select" (change)="selecionarOrden($event)">
+                    <option *ngFor="let option of orden" [value]="option.value">
+                        {{ option.label }}
+                    </option>
+                </select>
+            </div>
+        </div> -->
+        <div class="col">
+            <button type="button" class="btn btn-primary btn-lg" (click)="buscarConFiltros()">Buscar</button>
+        </div>
+    </form>
+
+    <!-- Lista -->
+    <div class="card-group p-1 row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
+        <item-game *ngFor="let item of paginatedGames" isVisible="{{loadingData}}" name="{{item.title}}"
+            id="{{item.id}}" image="{{item.thumbnail}}" genre="{{item.genre}}" platform="{{item.platform}}"
+            short_description="{{item.short_description}}">
+        </item-game>
+    </div>
+
+    <!-- Paginador -->
+
+
+</div>
+
+
+<div class="container">
+    <div class="row pb-5">
+        <div class="col d-flex justify-content-center">
+            <nav aria-label="Pagination">
+                <ul class="pagination">
+                    <!-- Botón "Anterior" -->
+                    <li class="page-item">
+                        <button class="page-link" (click)="changePage(currentPage - 1)" [disabled]="currentPage === 1">
+                            Anterior
+                        </button>
+                    </li>
+
+                    <!-- Números de página -->
+                    <li class="page-item" *ngFor="let page of getPageNumbers()">
+                        <button class="page-link" (click)="changePage(page)"
+                            [ngClass]="{'active': currentPage === page}">
+                            {{ page }}
+                        </button>
+                    </li>
+
+                    <!-- Botón "Siguiente" -->
+                    <li class="page-item">
+                        <button class="page-link" (click)="changePage(currentPage + 1)"
+                            [disabled]="currentPage === totalPages()">
+                            Siguiente
+                        </button>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</div>

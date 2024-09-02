@@ -1,0 +1,29 @@
+.selected-option {
+    background-color: white; 
+    color: #fff; 
+  }
+
+  .bg-primary {
+    background-color: #007bff; /* O el color azul que prefieras */
+    color: #fff;
+  }
+  .bg-white {
+    background-color: #fff;
+    color: #fff;
+  }
+
+
+  /* Estilo para la página activa */
+.page-item .page-link.active {
+  background-color: #007bff; /* Color de fondo activo */
+  color: white; /* Color de texto activo */
+  border-color: #007bff; /* Borde del botón activo */
+}
+
+/* Estilo para la página activa sin foco */
+.page-item .page-link.active:focus {
+  box-shadow: none; /* Elimina el efecto de sombra al enfocar */
+  outline: none; /* Elimina el contorno al enfocar */
+  background-color: #007bff; /* Asegúrate de que el color de fondo se mantenga */
+  color: white; /* Asegúrate de que el color del texto se mantenga */
+}

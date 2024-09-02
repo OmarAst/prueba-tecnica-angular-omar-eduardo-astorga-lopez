@@ -1,0 +1,18 @@
+<div *ngIf="!isVisible" class="card">
+    <div *ngIf="loading" class="skeleton-img card-img-top"></div>
+    <img src="{{image}}" class="card-img-top" alt="{{name}}" (error)="onImageError($event)" (load)="onImageLoad()">
+
+    <div class="card-body">
+        <h5 class="card-title">{{name}}</h5>
+        <p class="card-text">{{short_description}}</p>
+        <span class="badge rounded-pill bg-success">{{genre}}</span>
+        <span class="badge rou nded-pill bg-primary">{{platform}}</span>
+        <br>
+        <br>
+        <div class="row d-flex justify-content-end">
+                <a class="btn btn-primary" (click)="masdetalles(id)">Mas detalle</a>
+        </div>
+
+        <!-- <a href="#" class="btn btn-primary" routerLink="/game" routerLinkActive="active">Mas detalle</a> -->
+    </div>
+</div>

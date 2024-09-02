@@ -1,0 +1,86 @@
+<div class="container mt-5">
+    <!-- Título y Thumbnail -->
+    <div class="row mb-4">
+      <div class="col-lg-8">
+        <h1 class="display-4 mb-3">{{ game?.title }}</h1>
+        <img [src]="game?.thumbnail" alt="{{ game?.title }}" class="img-fluid rounded shadow-lg" />
+      </div>
+    </div>
+  
+    <!-- Información General -->
+    <div class="row mb-4">
+      <div class="col-md-6">
+        <h4 class="mb-3">Game Information</h4>
+        <dl class="row">
+          <dt class="col-sm-4">Status:</dt>
+          <dd class="col-sm-8">{{ game?.status }}</dd>
+          
+          <dt class="col-sm-4">Short Description:</dt>
+          <dd class="col-sm-8">{{ game?.short_description }}</dd>
+          
+          <dt class="col-sm-4">Description:</dt>
+          <dd class="col-sm-8">{{ game?.description }}</dd>
+          
+          <dt class="col-sm-4">Genre:</dt>
+          <dd class="col-sm-8">{{ game?.genre }}</dd>
+          
+          <dt class="col-sm-4">Platform:</dt>
+          <dd class="col-sm-8">{{ game?.platform }}</dd>
+          
+          <dt class="col-sm-4">Publisher:</dt>
+          <dd class="col-sm-8">{{ game?.publisher }}</dd>
+          
+          <dt class="col-sm-4">Developer:</dt>
+          <dd class="col-sm-8">{{ game?.developer }}</dd>
+          
+          <dt class="col-sm-4">FreeToGame Profile:</dt>
+          <dd class="col-sm-8">
+            <a [href]="game?.freetogame_profile_url" target="_blank" class="btn btn-link">View Profile</a>
+          </dd>
+        </dl>
+      </div>
+      <div class="col-md-6">
+        <h4 class="mb-3">Minimum System Requirements</h4>
+        <ul class="list-unstyled">
+          <li><strong>OS:</strong> {{ game?.minimum_system_requirements?.os }}</li>
+          <li><strong>Processor:</strong> {{ game?.minimum_system_requirements?.processor }}</li>
+          <li><strong>Memory:</strong> {{ game?.minimum_system_requirements?.memory }}</li>
+          <li><strong>Graphics:</strong> {{ game?.minimum_system_requirements?.graphics }}</li>
+          <li><strong>Storage:</strong> {{ game?.minimum_system_requirements?.storage }}</li>
+        </ul>
+      </div>
+    </div>
+  
+    <!-- Carrusel de Screenshots -->
+    <div class="row mb-4">
+      <div class="col-12">
+        <h2 class="mb-3">Screenshots</h2>
+        <div id="carouselExampleIndicators" class="carousel slide">
+          <div class="carousel-indicators">
+            <button *ngFor="let screenshot of game?.screenshots; let i = index" type="button" [attr.data-bs-target]="'#carouselExampleIndicators'" [attr.data-bs-slide-to]="i" [class.active]="i === 0" aria-current="i === 0 ? 'true' : null" [attr.aria-label]="'Slide ' + (i + 1)"></button>
+          </div>
+          <div class="carousel-inner">
+            <div *ngFor="let screenshot of game?.screenshots; let i = index" [ngClass]="{'carousel-item': true, 'active': i === 0}">
+              <img [src]="screenshot.image" class="d-block w-100" alt="Screenshot">
+            </div>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  
+    <!-- Botón de Jugar Ahora -->
+    <div class="row">
+      <div class="col-12">
+        <a [href]="game?.game_url" target="_blank" class="btn btn-primary btn-lg">Play Now</a>
+      </div>
+    </div>
+  </div>
+  
